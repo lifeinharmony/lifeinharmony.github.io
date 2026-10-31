@@ -1,0 +1,143 @@
+@font-face { font-family: "Nunito"; font-style: normal; font-weight: 200 1000; font-display: swap; src: url("../fonts/nunito-latin.woff2") format("woff2"); }
+
+/* Farben und Aufbau nach dem Entwurf: Salbei-Sand-Verlauf, dunkles Grün, drei Zielgruppenfarben. */
+:root {
+  color-scheme: light;
+  --gruen: #2D5A34;
+  --gruen-dunkel: #234829;
+  --blau: #2F4F9E;
+  --rot: #B5261B;
+  --braun: #8A5216;
+  --tinte: #2E332D;
+  --tinte-weich: #4C534A;
+  --karte: #F5F1E9;
+  --linie: #D5D0C1;
+  --radius: 20px;
+  --breite: 1080px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  color: var(--tinte);
+  background: #EBE3D6 linear-gradient(170deg, #D0DCD0 0, #DDDFD2 500px, #E8E2D4 1100px, #EBE3D6 100%) no-repeat;
+  font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
+h1, h2 { font-weight: 300; }
+h3 { font-weight: 600; }
+p, ul, ol { margin: 0; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--gruen); outline-offset: 3px; border-radius: 6px; }
+img { display: block; max-width: 100%; height: auto; }
+
+.bahn { padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px)); }
+.innen { max-width: var(--breite); margin-inline: auto; }
+
+/* Kopfzeile */
+.kopf .innen { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 28px; padding-block: 22px; }
+.marke { font-size: 1.4rem; font-weight: 400; letter-spacing: 0.03em; text-decoration: none; }
+.kopf nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.kopf nav a { text-decoration: none; padding-block: 4px; border-bottom: 2px solid transparent; }
+.kopf nav a:hover { border-bottom-color: var(--gruen); }
+
+/* Hero */
+.hero .innen { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(24px, 4vw, 48px) clamp(48px, 7vw, 80px); }
+.eyebrow { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gruen); }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4rem); margin-block: 16px 18px; }
+.hero .einleitung { font-size: 1.25rem; line-height: 1.5; max-width: 34em; }
+.knoepfe { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.knopf { display: inline-block; padding: 11px 26px; border-radius: 999px; border: 2px solid var(--gruen); background: var(--gruen); color: #fff; font-weight: 600; text-decoration: none; }
+.knopf:hover { background: var(--gruen-dunkel); border-color: var(--gruen-dunkel); }
+.knopf.leise { background: transparent; color: var(--gruen); }
+.knopf.leise:hover { background: rgba(255, 255, 255, 0.45); color: var(--gruen-dunkel); }
+
+/* Abschnitte */
+.abschnitt .innen { display: grid; gap: 30px; padding-block: clamp(40px, 6vw, 64px); }
+.abschnitt h2 { font-size: clamp(2rem, 4.5vw, 2.6rem); }
+.kopfzeile { display: grid; gap: 10px; max-width: 44em; }
+.kopfzeile p { font-size: 1.15rem; line-height: 1.5; color: var(--tinte-weich); }
+.kopfzeile p.eyebrow { font-size: 0.9rem; color: var(--gruen); }
+.helle-bahn { background: rgba(255, 255, 255, 0.32); }
+.unter-titel { font-size: 1.6rem; font-weight: 300; }
+
+.raster { display: grid; gap: 22px; }
+.drei { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.karte { background: var(--karte); border-radius: var(--radius); padding: 26px; display: grid; gap: 12px; align-content: start; }
+.karte h3 { font-size: 1.35rem; }
+.karte p { color: var(--tinte-weich); }
+.karte ul { padding-left: 1.2em; display: grid; gap: 5px; }
+
+/* Zielgruppen */
+.ziel { border-top: 6px solid var(--farbe); }
+.ziel h3 { color: var(--farbe); font-size: 1.5rem; }
+.ziel-team { --farbe: var(--gruen); }
+.ziel-familie { --farbe: var(--blau); }
+.ziel-eltern { --farbe: var(--rot); }
+
+/* Angebote im Detail */
+.status { justify-self: start; font-size: 0.875rem; font-weight: 700; padding: 2px 12px; border-radius: 999px; background: #EBDDB9; color: #5E3A0E; }
+.status.aktiv { background: var(--gruen); color: #fff; }
+.fuer { font-size: 0.95rem; font-weight: 700; color: var(--braun) !important; }
+.leitsatz { font-weight: 700; color: var(--tinte) !important; }
+
+/* Verleih */
+.gruende { display: grid; gap: 14px; }
+.grund { display: grid; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); gap: 8px 22px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--linie); }
+.grund:last-child { border-bottom: 0; padding-bottom: 0; }
+.grund b { font-weight: 700; color: var(--gruen); font-size: 1.1rem; }
+.schritte { list-style: none; padding: 0; counter-reset: schritt; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.schritte li { counter-increment: schritt; }
+.schritte li::before { content: counter(schritt); width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--gruen); color: #fff; font-weight: 700; }
+.schritte h3 { font-size: 1.2rem; }
+.zahl { font-size: 2.8rem; font-weight: 300; line-height: 1; }
+.zahl small { font-size: 1.15rem; margin-left: 6px; }
+.preis { font-weight: 700; color: var(--tinte) !important; }
+.bereiche { grid-template-columns: repeat(auto-fit, minmax(min(100%, 185px), 1fr)); }
+.bereiche .karte { padding: 20px; }
+.bereiche h3 { font-size: 1.15rem; color: var(--gruen); }
+.satz { font-size: 1.2rem; font-weight: 600; text-align: center; max-width: 36em; margin-inline: auto; text-wrap: balance; }
+.hinweis a { font-weight: 700; color: var(--gruen); overflow-wrap: anywhere; }
+
+/* Über mich */
+.ueber { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(24px, 5vw, 64px); align-items: start; }
+.willkommen { font-size: 1.2rem; line-height: 1.5; color: var(--tinte-weich); margin-top: 14px; }
+.ueber-text { display: grid; gap: 16px; }
+.quali { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.quali li { padding: 4px 14px; border-radius: 999px; border: 1.5px solid var(--gruen); color: var(--gruen-dunkel); font-size: 0.95rem; font-weight: 600; }
+.haltung b { font-size: 1.2rem; font-weight: 700; color: var(--gruen); }
+.haltung small { font-size: 0.9rem; font-weight: 700; color: var(--braun); }
+
+/* Kontakt */
+.kontakt { background: var(--gruen); color: #fff; border-radius: var(--radius); padding: clamp(26px, 4vw, 44px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px 40px; align-items: center; }
+.kontakt h2 { font-size: clamp(2rem, 4.5vw, 2.6rem); margin-bottom: 10px; }
+.wege { list-style: none; padding: 0; display: grid; gap: 10px; }
+.wege li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; align-items: center; }
+.wege svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.wege a, .wege span { overflow-wrap: anywhere; }
+.kontakt a:focus-visible { outline-color: #fff; }
+
+/* Fuß */
+.fuss .innen { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 28px; padding-block: 8px 36px; font-size: 0.95rem; }
+.fuss nav { display: flex; gap: 20px; }
+.fuss a { color: var(--gruen-dunkel); }
+
+/* Rechtstexte */
+.rechtstext .innen { max-width: 720px; display: grid; gap: 14px; padding-block: 16px 64px; }
+.rechtstext h1 { font-size: clamp(2rem, 4.5vw, 2.6rem); margin-bottom: 6px; }
+.rechtstext h2 { font-size: 1.3rem; font-weight: 600; margin-top: 16px; }
+.rechtstext a { color: var(--gruen-dunkel); font-weight: 600; overflow-wrap: anywhere; }
+
+@media (max-width: 900px) {
+  .drei, .schritte { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ueber, .kontakt { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .hero .innen, .drei, .zwei, .schritte { grid-template-columns: minmax(0, 1fr); }
+  .hero img { max-width: 300px; margin-inline: auto; }
+  .grund { grid-template-columns: minmax(0, 1fr); }
+}
